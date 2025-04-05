@@ -1,8 +1,7 @@
-import { HttpException, HttpStatus, ValidationPipe } from '@nestjs/common';
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app/app.module';
-import { EmptyBadRequestFilter } from './shared/filters/empty-bad-request.filter';
 import { LoggingInterceptor } from './shared/interceptors/logging.interceptor';
 
 async function bootstrap() {
@@ -11,12 +10,7 @@ async function bootstrap() {
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
-      forbidNonWhitelisted: true,
-      exceptionFactory: () =>
-        new HttpException(
-          'Unprocessable Entity',
-          HttpStatus.UNPROCESSABLE_ENTITY,
-        ),
+      errorHttpStatusCode: 422,
     }),
   );
   app.useGlobalInterceptors(new LoggingInterceptor());
@@ -28,8 +22,6 @@ async function bootstrap() {
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, documentFactory);
-
-  app.useGlobalFilters(new EmptyBadRequestFilter());
 
   await app.listen(process.env.PORT ?? 3000);
 }
