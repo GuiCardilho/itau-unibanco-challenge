@@ -1,3 +1,21 @@
+import { ApiProperty } from '@nestjs/swagger';
+import { Transform } from 'class-transformer';
+import { IsInt, IsNumber, IsOptional, IsPositive } from 'class-validator';
+
+export class GetStatisticQueryDto {
+  @IsNumber()
+  @IsOptional()
+  @IsPositive()
+  @IsInt()
+  @ApiProperty({
+    description: 'Time period in seconds',
+    example: 60,
+  })
+  @Transform(({ value }: { value: string }) => parseInt(value))
+  @IsOptional()
+  seconds?: number;
+}
+
 export class GetStatisticResponseDto {
   count!: number;
   sum!: number;

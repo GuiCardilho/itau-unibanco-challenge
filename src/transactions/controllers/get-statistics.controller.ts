@@ -1,6 +1,9 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { GetStatisticResponseDto } from '../dtos/get-statistic.dto';
+import {
+  GetStatisticQueryDto,
+  GetStatisticResponseDto,
+} from '../dtos/get-statistic.dto';
 import { GetStatisticsService } from '../services/get-statistics.service';
 
 @ApiTags('statistics')
@@ -22,7 +25,7 @@ export class GetStatisticsController {
       max: 100,
     },
   })
-  getStatistics() {
-    return this.getStatisticsService.execute();
+  getStatistics(@Query() query: GetStatisticQueryDto) {
+    return this.getStatisticsService.execute(query);
   }
 }
