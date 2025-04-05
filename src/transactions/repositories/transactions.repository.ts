@@ -12,4 +12,8 @@ export class TransactionsRepository {
   clear() {
     this.transactions = [];
   }
+
+  getTransactions() {
+    return this.transactions;
+  }
 }
