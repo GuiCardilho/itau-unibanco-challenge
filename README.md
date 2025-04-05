@@ -174,9 +174,8 @@ src/
 │   ├── entities/
 │   ├── services/
 │   └── repository/
-├── statistics/          # GET /estatistica handler
 ├── health/              # Health check
-├── common/              # Interceptors, filters
+├── shared/              # Interceptors, filters
 ```
 
 ---
@@ -194,14 +193,16 @@ src/
 
 ## ✅ Challenge Goals Met
 
-- [x] Receber e validar transações
-- [x] Estatísticas dos últimos 60 segundos
-- [x] Armazenamento em memória
-- [x] 100% em JSON
-- [x] Endpoints e formatos exatamente como especificado
+- [x] Receive and validate transactions
+- [x] Statistics of the last 60 seconds
+- [x] Memory storage
+- [x] 100% in JSON
+- [x] Endpoints and formats exactly as specified
 - [x] Health check
-- [x] Containerização
-- [x] Código limpo e bem testado
+- [x] Containerization
+- [x] Clean and well-tested code
+- [x] Logging
+- [ ] Tests for all endpoints
 
 ---
 
