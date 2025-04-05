@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreateTransactionDto } from '../dtos/create-transactions.dto';
+import { CreateTransactionDto } from '../dtos/create-transaction.dto';
 import { Transaction } from '../entities/transaction.entity';
 import { TransactionsRepository } from '../repositories/transactions.repository';
 

@@ -8,4 +8,8 @@ export class TransactionsRepository {
   add(transaction: Transaction) {
     this.transactions.push(transaction);
   }
+
+  clear() {
+    this.transactions = [];
+  }
 }

@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { CreateTransactionDto } from '../dtos/create-transactions.dto';
-import { TransactionsService } from '../services/create-transactions.service';
+import { CreateTransactionDto } from '../dtos/create-transaction.dto';
+import { TransactionsService } from '../services/create-transaction.service';
 
 @ApiTags('transactions')
 @Controller('transacao')
